@@ -5,21 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Akutana | Game Programmer</title>
-    <meta name="description" content="Game programmer portfolio.">
+    <title>Ewan Boucher | Game Programmer</title>
+    <meta name="description" content="Ewan Boucher's game programming portfolio.">
 
     <style>
+        /*Variables*/
+
+        :root {
+            --background: #101014;
+            --surface: #19191F;
+            --surface-hover: #22212A;
+            --accent: #B47FFF;
+            --text: #F2EDF8;
+            --text-muted: #9993A5;
+            --border: #302B38;
+
+            --sidebar-width: 250px;
+            --content-width: 1100px;
+        }
+
+        /*Reset & Global*/
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #111111;
-            color: #f5f5f5;
+            min-height: 100vh;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
+        }
+
+        button,
+        a {
+            font: inherit;
+        }
+
+        button {
+            color: inherit;
         }
 
         a {
@@ -27,76 +58,221 @@
             text-decoration: none;
         }
 
-        .container {
-            width: min(1100px, 90%);
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        /*Sidebar*/
+
+        .sidebar {
+            position: fixed;
+            inset: 0 auto 0 0;
+            width: var(--sidebar-width);
+            padding: 40px 28px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background: var(--background);
+            border-right: 1px solid var(--border);
+            z-index: 10;
+        }
+
+        .identity {
+            margin-bottom: 48px;
+        }
+
+        .identity h1 {
+            font-size: 1.7rem;
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+        }
+
+        .identity p {
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-link {
+            display: block;
+            width: 100%;
+            padding: 12px 14px;
+
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 8px;
+
+            color: var(--text-muted);
+            text-align: left;
+            cursor: pointer;
+
+            transition:
+                color 180ms ease,
+                background 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--surface);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+            background: rgba(180, 127, 255, 0.09);
+            border-color: rgba(180, 127, 255, 0.18);
+        }
+
+        .sidebar-bottom {
+            margin-top: 48px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .sidebar-bottom span {
+            color: var(--accent);
+        }
+
+        /*Main Content*/
+
+        main {
+            min-height: 100vh;
+            margin-left: var(--sidebar-width);
+            padding: 72px 7%;
+        }
+
+        .content-container {
+            width: 100%;
+            max-width: var(--content-width);
             margin: 0 auto;
         }
 
-        header {
-            padding: 24px 0;
-            border-bottom: 1px solid #333333;
+        .page {
+            display: none;
+            animation: page-enter 250ms ease both;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
+        .page.active {
+            display: block;
         }
 
-        nav ul {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        #hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 0;
-        }
-
-        #hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
+        .page-label {
             margin-bottom: 16px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
 
-        #hero p {
-            color: #aaaaaa;
-            font-size: 1.2rem;
-        }
-        section {
-            padding: 80px 0;
-            border-top: 1px solid #333333;
-        }
-
-        section h2 {
-            font-size: 2rem;
+        .page h2 {
             margin-bottom: 24px;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            letter-spacing: -0.04em;
         }
 
-        footer {
-            padding: 32px 0;
-            border-top: 1px solid #333333;
-            color: #aaaaaa;
-            text-align: center;
+        .page-placeholder {
+            min-height: 200px;
+            padding: 28px;
+
+            display: flex;
+            align-items: center;
+
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            color: var(--text-muted);
         }
 
-      
-        @media (max-width: 600px) {
-            nav {
-                flex-direction: column;
+        /*Page Transition*/
+
+        @keyframes page-enter {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /*Responsive Layout*/
+
+        @media (max-width: 760px) {
+            .sidebar {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                padding: 18px 5%;
+
+                display: block;
+
+                border-right: none;
+                border-bottom: 1px solid var(--border);
             }
 
-            #hero {
-                min-height: 60vh;
+            .identity {
+                margin-bottom: 16px;
+            }
+
+            .identity h1 {
+                font-size: 1.4rem;
+            }
+
+            .identity p {
+                margin-top: 4px;
+            }
+
+            .navigation {
+                flex-direction: row;
+                gap: 6px;
+                overflow-x: auto;
+                padding: 2px 0 6px;
+            }
+
+            .nav-link {
+                width: auto;
+                flex: 0 0 auto;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .sidebar-bottom {
+                display: none;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 48px 5%;
+            }
+
+            .page-placeholder {
+                min-height: 160px;
+                padding: 20px;
             }
         }
     </style>
@@ -104,57 +280,151 @@
 
 <body>
 
-    <header>
-        <nav class="container">
-            <a href="#hero"><strong>Akutana</strong></a>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
 
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <div class="identity">
+            <h1>Ewan Boucher</h1>
+            <p>Junior Game Programmer</p>
+        </div>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <button class="nav-link active"
+                    data-page="about"
+                    aria-controls="about"
+                    aria-current="page">
+                About
+            </button>
+
+            <button class="nav-link"
+                    data-page="projects"
+                    aria-controls="projects">
+                Projects
+            </button>
+
+            <button class="nav-link"
+                    data-page="skills"
+                    aria-controls="skills">
+                Skills
+            </button>
+
+            <button class="nav-link"
+                    data-page="education"
+                    aria-controls="education">
+                Education
+            </button>
+
+            <button class="nav-link"
+                    data-page="contact"
+                    aria-controls="contact">
+                Contact
+            </button>
         </nav>
-    </header>
 
+        <div class="sidebar-bottom">
+            <span>●</span> Game Development Portfolio
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
     <main>
-        <section id="hero">
-            <div class="container">
-                <h1>Your Name</h1>
-                <p>Junior Game Programmer | Unreal Engine & Unity | C++ / C#</p>
-            </div>
-        </section>
+        <div class="content-container">
 
-        <section id="about">
-            <div class="container">
-                <h2>About Me</h2>
-            </div>
-        </section>
+            <section class="page active"
+                     id="about"
+                     aria-labelledby="about-title">
+                <p class="page-label">01 / Introduction</p>
+                <h2 id="about-title">About</h2>
 
-        <section id="projects">
-            <div class="container">
-                <h2>Projects</h2>
-            </div>
-        </section>
+                <div class="page-placeholder">
+                    <!-- About content goes here -->
+                </div>
+            </section>
 
-        <section id="skills">
-            <div class="container">
-                <h2>Skills</h2>
-            </div>
-        </section>
+            <section class="page"
+                     id="projects"
+                     aria-labelledby="projects-title"
+                     hidden>
+                <p class="page-label">02 / Portfolio</p>
+                <h2 id="projects-title">Projects</h2>
 
-        <section id="contact">
-            <div class="container">
-                <h2>Contact</h2>
-            </div>
-        </section>
+                <div class="page-placeholder">
+                    <!-- Projects content goes here -->
+                </div>
+            </section>
+
+            <section class="page"
+                     id="skills"
+                     aria-labelledby="skills-title"
+                     hidden>
+                <p class="page-label">03 / Expertise</p>
+                <h2 id="skills-title">Skills</h2>
+
+                <div class="page-placeholder">
+                    <!-- Skills content goes here -->
+                </div>
+            </section>
+
+            <section class="page"
+                     id="education"
+                     aria-labelledby="education-title"
+                     hidden>
+                <p class="page-label">04 / Background</p>
+                <h2 id="education-title">Education</h2>
+
+                <div class="page-placeholder">
+                    <!-- Education content goes here -->
+                </div>
+            </section>
+
+            <section class="page"
+                     id="contact"
+                     aria-labelledby="contact-title"
+                     hidden>
+                <p class="page-label">05 / Get in touch</p>
+                <h2 id="contact-title">Contact</h2>
+
+                <div class="page-placeholder">
+                    <!-- Contact information goes here -->
+                </div>
+            </section>
+
+        </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Akutana</p>
-        </div>
-    </footer>
+    <!-- Page Navigation -->
+    <script>
+        const navigationLinks = document.querySelectorAll(".nav-link");
+        const pages = document.querySelectorAll(".page");
+
+        function showPage(pageId) {
+            pages.forEach((page) => {
+                const isActive = page.id === pageId;
+
+                page.classList.toggle("active", isActive);
+                page.hidden = !isActive;
+            });
+
+            navigationLinks.forEach((link) => {
+                const isActive = link.dataset.page === pageId;
+
+                link.classList.toggle("active", isActive);
+
+                if (isActive) {
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        }
+
+        navigationLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                showPage(link.dataset.page);
+            });
+        });
+    </script>
 
 </body>
 </html>
