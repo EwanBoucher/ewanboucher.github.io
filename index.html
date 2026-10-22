@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,10 +148,32 @@
             color: var(--accent);
         }
 
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
         main {
             min-height: 100vh;
             margin-left: var(--sidebar-width);
             padding: 72px 7%;
+        }
+
+        .home-hero {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .home-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 6rem);
+        }
+
+        .home-hero p {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
         }
 
         .content-container {
@@ -176,7 +199,7 @@
             letter-spacing: 0.16em;
             text-transform: uppercase;
         }
-
+        
         .page h2 {
             margin-bottom: 24px;
             font-size: clamp(2.2rem, 5vw, 3.5rem);
@@ -196,6 +219,11 @@
             border-radius: 12px;
 
             color: var(--text-muted);
+        }
+
+        /* Hamburger button: hidden on desktop */
+        .menu-toggle {
+            display: none;
         }
 
         /*Page Transition*/
@@ -219,82 +247,72 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-        }
+        }        
 
-        /*Responsive Layout*/
         @media (max-width: 760px) {
-            .sidebar {
-                position: sticky;
-                top: 0;
-                width: 100%;
-                padding: 18px 5%;
-
+            .menu-toggle {
                 display: block;
+                position: fixed;
+                top: 16px;
+                right: 20px;
+                z-index: 1001;
 
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .identity {
-                margin-bottom: 16px;
-            }
-
-            .identity h1 {
-                font-size: 1.4rem;
-            }
-
-            .identity p {
-                margin-top: 4px;
-            }
-
-            .navigation {
-                flex-direction: row;
-                gap: 6px;
-                overflow-x: auto;
-                padding: 2px 0 6px;
-            }
-
-            .nav-link {
-                width: auto;
-                flex: 0 0 auto;
+                background: var(--surface);
+                color: var(--text);
+                border: 1px solid var(--border);
+                border-radius: 8px;
                 padding: 8px 12px;
-                font-size: 0.9rem;
+
+                font-size: 1.5rem;
+                cursor: pointer;
             }
 
-            .sidebar-bottom {
-                display: none;
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+
+                width: 250px;
+                transform: translateX(-100%);
+                transition: transform 0.25s ease;
+
+                background: var(--background);
+                z-index: 1000;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
             }
 
             main {
                 margin-left: 0;
-                padding: 48px 5%;
-            }
-
-            .page-placeholder {
-                min-height: 160px;
-                padding: 20px;
+                padding: 80px 20px 30px;
             }
         }
+
     </style>
 </head>
 
 <body>
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false">
+    ☰
+    </button>
 
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
 
-        <div class="identity">
-            <h1>Ewan Boucher</h1>
-            <p>Junior Game Programmer</p>
-        </div>
-
         <nav class="navigation" aria-label="Main navigation">
+        <div class="identity">
             <button class="nav-link active"
-                    data-page="about"
-                    aria-controls="about"
+                    data-page="home"
+                    aria-controls="home"
                     aria-current="page">
-                About
+                <h1>Ewan</h1>
             </button>
+        </div>
 
             <button class="nav-link"
                     data-page="projects"
@@ -321,10 +339,6 @@
             </button>
         </nav>
 
-        <div class="sidebar-bottom">
-            <span>●</span> Game Development Portfolio
-        </div>
-
     </aside>
 
     <!-- Main Content -->
@@ -332,13 +346,21 @@
         <div class="content-container">
 
             <section class="page active"
-                     id="about"
-                     aria-labelledby="about-title">
-                <p class="page-label">01 / Introduction</p>
-                <h2 id="about-title">About</h2>
+                     id="home"
+                     aria-labelledby="home-title">
+                <!-- <br><br><br><br><br>
+                <h1 style="font-size:clamp(2rem, 6vw, 6rem);
+                           text-align:center;">Ewan Boucher</h1>
+                <p style="text-align:center;
+                          font-size:200%;">Junior Game Programmer</p> -->
+
+                <div class="home-hero">
+                    <h1 id="home-title">Ewan Boucher</h1>
+                    <p>Junior Game Programmer</p>
+                </div>
 
                 <div class="page-placeholder">
-                    <!-- About content goes here -->
+                    <p>Blablabla</p>
                 </div>
             </section>
 
@@ -346,7 +368,7 @@
                      id="projects"
                      aria-labelledby="projects-title"
                      hidden>
-                <p class="page-label">02 / Portfolio</p>
+                <p class="page-label">01 / Portfolio</p>
                 <h2 id="projects-title">Projects</h2>
 
                 <div class="page-placeholder">
@@ -358,7 +380,7 @@
                      id="skills"
                      aria-labelledby="skills-title"
                      hidden>
-                <p class="page-label">03 / Expertise</p>
+                <p class="page-label">02 / Expertise</p>
                 <h2 id="skills-title">Skills</h2>
 
                 <div class="page-placeholder">
@@ -370,7 +392,7 @@
                      id="education"
                      aria-labelledby="education-title"
                      hidden>
-                <p class="page-label">04 / Background</p>
+                <p class="page-label">03 / Background</p>
                 <h2 id="education-title">Education</h2>
 
                 <div class="page-placeholder">
@@ -382,7 +404,7 @@
                      id="contact"
                      aria-labelledby="contact-title"
                      hidden>
-                <p class="page-label">05 / Get in touch</p>
+                <p class="page-label">04 / Get in touch</p>
                 <h2 id="contact-title">Contact</h2>
 
                 <div class="page-placeholder">
@@ -422,9 +444,27 @@
         navigationLinks.forEach((link) => {
             link.addEventListener("click", () => {
                 showPage(link.dataset.page);
+                sidebar.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.textContent = "☰";
             });
         });
-    </script>
 
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = sidebar.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+    </script>
 </body>
 </html>
