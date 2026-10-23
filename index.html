@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,65 +16,81 @@
 </head>
 
 <body>
-    <button class="menu-toggle" id="menuToggle"
+    <button 
+        class="menu-toggle" id="menuToggle"
         aria-label="Open navigation menu"
-        aria-expanded="false">
-    ☰
+        aria-expanded="false"
+    >
+        ☰
     </button>
 
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
 
-        <nav class="navigation" aria-label="Main navigation">
+        <nav 
+            class="navigation" 
+            aria-label="Main navigation"
+        >
         <div class="identity">
-            <button class="nav-link active"
-                    data-page="home"
-                    aria-controls="home"
-                    aria-current="page">
+            <button 
+                class="nav-link active"
+                data-page="home"
+                aria-controls="home"
+                aria-current="page"
+            >
                 <h1>Ewan</h1>
             </button>
         </div>
 
-            <button class="nav-link"
-                    data-page="projects"
-                    aria-controls="projects">
+            <button 
+                class="nav-link"
+                data-page="projects"
+                aria-controls="projects"
+            >
                 Projects
             </button>
 
-            <button class="nav-link"
-                    data-page="skills"
-                    aria-controls="skills">
+            <button 
+                class="nav-link"
+                data-page="skills"
+                aria-controls="skills"
+            >
                 Skills
             </button>
 
-            <button class="nav-link"
-                    data-page="education"
-                    aria-controls="education">
+            <button 
+                class="nav-link"
+                data-page="education"
+                aria-controls="education"
+            >
                 Education
             </button>
 
-            <button class="nav-link"
-                    data-page="contact"
-                    aria-controls="contact">
+            <button 
+                class="nav-link"
+                data-page="contact"
+                aria-controls="contact"
+            >
                 Contact
             </button>
         </nav>
 
+        <footer>
+            <div class="container">
+                <p style="color: var(--text-muted)">&copy; 2026 Ewan Boucher. All Rights Reserved.</p>
+            </div>
+        </footer>
     </aside>
 
     <!-- Main Content -->
     <main>
         <div class="content-container">
 
-            <section class="page active"
-                     id="home"
-                     aria-labelledby="home-title">
-                <!-- <br><br><br><br><br>
-                <h1 style="font-size:clamp(2rem, 6vw, 6rem);
-                           text-align:center;">Ewan Boucher</h1>
-                <p style="text-align:center;
-                          font-size:200%;">Junior Game Programmer</p> -->
-
+            <section 
+                class="page active"
+                id="home"
+                aria-labelledby="home-title"
+            >
                 <div class="home-hero">
                     <h1 id="home-title">Ewan Boucher</h1>
                     <p>Junior Game Programmer</p>
@@ -85,22 +100,214 @@
                 </div>
             </section>
 
-            <section class="page"
-                     id="projects"
-                     aria-labelledby="projects-title"
-                     hidden>
+            <section 
+                class="page"
+                id="projects"
+                aria-labelledby="projects-title"
+                hidden
+            >
                 <p class="page-label">01 / Portfolio</p>
                 <h2 id="projects-title">Projects</h2>
 
-                <div class="page-placeholder">
-                    <!-- Projects content goes here -->
+                <div class="projects-grid">
+                    <div class="project">
+                        <p class="project-date">February 2026 - June 2026</p>
+                        <h3>Apex Engine</h3>
+
+                        <p class="project-description">
+                            Custom Game Engine built in C++ using Modern OpenGL.
+                        </p>
+
+                        <video
+                            class="project-media"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source
+                                src="assets/projects/apex-engine.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <p class="project-tasks">
+                            Tasks:
+                            <br>● Component-based architecture
+                            <br>● Core application loop and runtime systems
+                            <br>● Scripting system: integration of LuaJIT API
+                            <br>● Editor tools including hierarchy and component panels for real-time scene interaction
+                            <br>● Build system
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <p class="project-date">February 2026</p>
+                        <h3>Dice Hunt</h3>
+
+                        <p class="project-description">
+                            McGameJam 2026 entry built in Unity 6 with C#, themed <i>The Hunt</i>.
+                        </p>
+
+                        <video
+                            class="project-media"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source
+                                src="assets/projects/dice-hunt.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <p class="project-tasks">
+                            Tasks:
+                            <br>● Menus and UI
+                            <br>● Game manager implementation
+                            <br>● 2D assets integration
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <p class="project-date">December 2025</p>
+                        <h3>Spider AI</h3>
+
+                        <p class="project-description">
+                            Game prototype built in C++ and Blueprints using Unreal Engine 5.
+                        </p>
+
+                        <video
+                            class="project-media"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source
+                                src="assets/projects/spider-ai.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <p class="project-tasks">
+                            Tasks:
+                            <br>● Spider web actor
+                            <br>● Behavior Tree tasks and collision handling for ceiling-related actions of AI spider
+                            <br>● Stamina system for the player
+                            <br>● Menus and UI
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <p class="project-date">June 2025</p>
+                        <h3>The Spectrum Retreat</h3>
+
+                        <p class="project-description">
+                            Game prototype built in C++ using Modern OpenGL.
+                            <br>
+                            Inspired by the game <i>The Spectrum Retreat</i>.
+                        </p >
+
+                        <video
+                            class="project-media"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source
+                                src="assets/projects/the-spectrum-retreat.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <p class="project-tasks">
+                            Tasks:
+                            <br>● Game Manager
+                            <br>● Menus
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <p class="project-date">April 2025</p>
+                        <h3>Roots</h3>
+
+                        <p class="project-description">
+                            Game built in C# using Unity 6.
+                        </p >
+
+                        <video
+                            class="project-media"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source
+                                src="assets/projects/roots.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <p class="project-tasks">
+                            Tasks:
+                            <br>● Root generation
+                            <br>● Collision detection with rocks
+                            <br>● Health system
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <p class="project-date">February 2025</p>
+                        <h3>Rasterizer</h3>
+
+                        <p class="project-description">
+                            Software rasterizer built in C++ using OpenGL Legacy.
+                        </p >
+
+                        <video
+                            class="project-media"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source
+                                src="assets/projects/rasterizer.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <p class="project-tasks">
+                            Tasks:
+                            <br>● Function to draw the scene
+                            <br>● Camera + perspective projection
+                            <br>● Sutherland-Hodgman clipping
+                        </p>
+                    </div>
                 </div>
             </section>
 
-            <section class="page"
-                     id="skills"
-                     aria-labelledby="skills-title"
-                     hidden>
+            <section 
+                class="page"
+                id="skills"
+                aria-labelledby="skills-title"
+                hidden
+            >
                 <p class="page-label">02 / Expertise</p>
                 <h2 id="skills-title">Skills</h2>
 
@@ -109,10 +316,12 @@
                 </div>
             </section>
 
-            <section class="page"
-                     id="education"
-                     aria-labelledby="education-title"
-                     hidden>
+            <section 
+                class="page"
+                id="education"
+                aria-labelledby="education-title"
+                hidden
+            >
                 <p class="page-label">03 / Background</p>
                 <h2 id="education-title">Education</h2>
 
@@ -121,10 +330,12 @@
                 </div>
             </section>
 
-            <section class="page"
-                     id="contact"
-                     aria-labelledby="contact-title"
-                     hidden>
+            <section 
+                class="page"
+                id="contact"
+                aria-labelledby="contact-title"
+                hidden
+            >
                 <p class="page-label">04 / Get in touch</p>
                 <h2 id="contact-title">Contact</h2>
 
