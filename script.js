@@ -46,3 +46,47 @@ menuToggle.addEventListener("click", () => {
 
     menuToggle.textContent = isOpen ? "✕" : "☰";
 });
+
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("form-status");
+
+contactForm.reset();
+
+contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+    }
+
+    const submitButton = contactForm.querySelector("button[type='submit']");
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    try {
+        const response = await fetch("https://formspree.io/f/xwllynge", {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            contactForm.reset();
+            formStatus.textContent = "Your message has been sent successfully!";
+            formStatus.className = "success";
+        } else {
+            throw new Error("Submission failed");
+        }
+
+    } catch (error) {
+        formStatus.textContent = "Something went wrong. Please try again.";
+        formStatus.className = "error";
+    }
+
+    submitButton.disabled = false;
+    submitButton.textContent = "Send Message";
+});

@@ -86,6 +86,7 @@
     <main>
         <div class="content-container">
 
+            <!-- Main page -->
             <section 
                 class="page active"
                 id="home"
@@ -100,14 +101,13 @@
                 </div>
             </section>
 
+            <!-- Projects -->
             <section 
                 class="page"
                 id="projects"
                 aria-labelledby="projects-title"
                 hidden
             >
-                <h2 id="projects-title">Projects</h2>
-
                 <div class="projects-grid">
                     <div class="project">
                         <p class="project-date">October 2026</p>
@@ -134,7 +134,7 @@
                         </div>
 
                         <p class="project-description">
-                            Cosmic Jam 2026 entry built in Unity 6 with C#,
+                            Cosmic Jam 2026 entry built in Unity 6 with C#,<br>
                             themed <i>Orbit</i>.
                         </p>
 
@@ -191,7 +191,8 @@
                         </div>
 
                         <p class="project-description">
-                            Creative Jam 2026 entry built in Unity 6 with C#, themed <i>Time travel</i>.
+                            Creative Jam 2026 entry built in Unity 6 with C#,<br>
+                            themed <i>Time travel</i>.
                         </p>
 
                         <video
@@ -287,7 +288,8 @@
                         </div>
 
                         <p class="project-description">
-                            McGameJam 2026 entry built in Unity 6 with C#, themed <i>The Hunt</i>.
+                            McGameJam 2026 entry built in Unity 6 with C#,<br>
+                            themed <i>The Hunt</i>.
                         </p>
 
                         <video
@@ -338,7 +340,8 @@
                         </div>
 
                         <p class="project-description">
-                            Game prototype built in C++ and Blueprints using Unreal<br>Engine 5.
+                            Game prototype built in C++ and Blueprints<br>
+                            using Unreal Engine 5.
                         </p>
 
                         <video
@@ -503,42 +506,135 @@
                 </div>
             </section>
 
+            <!-- Skills -->
             <section 
                 class="page"
                 id="skills"
                 aria-labelledby="skills-title"
                 hidden
             >
-                <h2 id="skills-title">Skills</h2>
-
                 <div class="page-placeholder">
                     <!-- Skills content goes here -->
                 </div>
             </section>
 
+            <!-- Education -->
             <section 
                 class="page"
                 id="education"
                 aria-labelledby="education-title"
                 hidden
             >
-                <h2 id="education-title">Education</h2>
-
                 <div class="page-placeholder">
                     <!-- Education content goes here -->
                 </div>
             </section>
 
+            <!-- Contact -->
             <section 
                 class="page"
                 id="contact"
                 aria-labelledby="contact-title"
                 hidden
             >
-                <h2 id="contact-title">Contact</h2>
+                <div class="contact-content">
+                    <form class="contact-form" id="contactForm"
+                        action="https://formspree.io/f/xwllynge"
+                        method="POST"
+                        novalidate>
 
-                <div class="page-placeholder">
-                    <!-- Contact information goes here -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Your name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input
+                                type="text"
+                                id="subject"
+                                name="_subject"
+                                placeholder="What is this about?"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="7"
+                                placeholder="Write your message here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <p id="form-status" role="alert"></p>
+
+                        <button type="submit" class="contact-submit">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                    <div class="contact-links">
+
+                        <a href="mailto:ewan.boucher@proton.me"
+                            class="contact-link">
+                            <img src="https://cdn.simpleicons.org/protonmail/B47FFF" alt="">
+                            ewan.boucher@proton.me
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/ewan-boucher/"
+                            class="contact-link"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="#B47FFF"
+                                aria-hidden="true"
+                            >
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+
+                        <a href="https://github.com/EwanBoucher"
+                            class="contact-link"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="https://cdn.simpleicons.org/github/B47FFF" alt="">
+                            GitHub
+                        </a>
+
+                        <a href="https://akutana.itch.io/"
+                            class="contact-link"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="https://cdn.simpleicons.org/itchdotio/B47FFF" alt="">
+                            itch.io
+                        </a>
+
+                    </div>
                 </div>
             </section>
 

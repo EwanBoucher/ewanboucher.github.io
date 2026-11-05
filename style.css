@@ -371,3 +371,144 @@ main {
         grid-template-columns: 1fr;
     }
 }
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 700px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    color: var(--text);
+    font: inherit;
+
+    transition: border-color 180ms ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 160px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.contact-submit {
+    align-self: flex-start;
+    padding: 12px 24px;
+
+    background: rgba(180, 127, 255, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+
+    color: var(--accent);
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 180ms ease;
+
+    align-self: center;
+}
+
+.contact-submit:hover {
+    background: var(--accent);
+    color: var(--background);
+}
+
+#form-status {
+    color: #FF7777;
+    font-size: 0.9rem;
+}
+
+#form-status.success {
+    color: #4CAF50;
+}
+
+#form-status.error {
+    color: #F44336;
+}
+
+.contact-content {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 10px 16px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    color: var(--text);
+    text-decoration: none;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+
+    transition: 
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.contact-link img,
+.contact-link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.contact-link:hover {
+    background: #25212D;
+    border-color: #B47FFF;
+    transform: translateY(-2px);
+}
