@@ -285,7 +285,10 @@ main {
     text-decoration: none;
     font-size: 14px;
 
-    transition: 0.2s ease;
+    transition: 
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .project-link img {
@@ -296,6 +299,7 @@ main {
 .project-link:hover {
     border-color: #B47FFF;
     color: #B47FFF;
+    transform: translateY(-2px);
 }
 
 /* Hamburger button: hidden on desktop */
@@ -370,6 +374,71 @@ main {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* Skills */
+.skills-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.skills-category {
+    h3 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        color: var(--accent);
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    max-width: 1000px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.skill 
+{
+    img {
+        margin-bottom: 10px;
+        width: 60px;
+        height: 60px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 28px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    transition: 
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.skill:hover {
+    border-color: #B47FFF;
+    color: #B47FFF;
+    transform: translateY(-2px);
 }
 
 /* Contact Form */
@@ -491,7 +560,6 @@ main {
     color: var(--text);
     text-decoration: none;
 
-    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.95rem;
 
     transition: 
@@ -510,5 +578,6 @@ main {
 .contact-link:hover {
     background: #25212D;
     border-color: #B47FFF;
+    color: #B47FFF;
     transform: translateY(-2px);
 }
