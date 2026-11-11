@@ -20,6 +20,11 @@ function showPage(pageId) {
             link.removeAttribute("aria-current");
         }
     });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 }
 
 navigationLinks.forEach((link) => {

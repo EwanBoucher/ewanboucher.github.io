@@ -34,8 +34,19 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, h3 {
+h1, h2 {
     font-family: "Space Grotesk", sans-serif;
+}
+
+h3 {
+    font: inherit;
+    font-size: large;
+    color: var(--text-muted);
+}
+
+h4 {
+    font: inherit;
+    font-size: medium;
 }
 
 button,
@@ -194,10 +205,10 @@ main {
 }
 
 .page h2 {
-    margin-bottom: 24px;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    line-height: 1.15;
-    letter-spacing: -0.04em;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: var(--accent);
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 .page-placeholder {
@@ -232,14 +243,11 @@ main {
     margin-left: 30px;
 }
 
-.project {
-    h3 {
-        font-size: clamp(1.5rem, 5vw, 2rem);
-        color: var(--accent);
-        margin-bottom: 15px;
-        text-align: center;
-    }
+.project h2 {
+    text-align: center;
+}
 
+.project {
     min-height: 200px;
     padding: 28px;
 
@@ -388,13 +396,6 @@ main {
 }
 
 .skills-category {
-    h3 {
-        font-size: clamp(1.5rem, 5vw, 2rem);
-        color: var(--accent);
-        margin-bottom: 15px;
-        text-align: left;
-    }
-
     max-width: 1000px;
 
     display: flex;
@@ -444,6 +445,55 @@ main {
     color: #B47FFF;
     transform: translateY(-2px);
 }
+
+
+/* Education */
+.education-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.education {  
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    column-gap: 24px;
+    row-gap: 16px;
+    
+    width: fit-content;
+    max-width: 800px;
+    margin: 0 auto;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+}
+
+.education h3, h4 {
+    color: var(--text);
+}
+
+.education-info {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.education-description {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    color: var(--text-muted)
+}
+
 
 /* Contact Form */
 .contact-form {
