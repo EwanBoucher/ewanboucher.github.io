@@ -1,4 +1,5 @@
 const navigationLinks = document.querySelectorAll(".nav-link");
+const homeLinks = document.querySelectorAll(".home-button");
 const pages = document.querySelectorAll(".page");
 
 function showPage(pageId) {
@@ -34,6 +35,13 @@ navigationLinks.forEach((link) => {
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open navigation menu");
         menuToggle.textContent = "☰";
+    });
+});
+
+homeLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        showPage(link.dataset.page);
     });
 });
 
